@@ -23,9 +23,10 @@ services:
       - 5432:5432
 
   nodejs:
-    build: .star-burger/nodejs
+    build: ./nodejs
     volumes:
       - ./star-burger/bundles-src:/usr/src/star-burger/bundles-src/
+      - ./star-burger/bundles:/usr/src/star-burger/bundles/
     command: ./node_modules/.bin/parcel build bundles-src/index.js --dist-dir bundles --public-url="./"
     depends_on:
       - web
