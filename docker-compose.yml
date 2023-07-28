@@ -35,7 +35,7 @@ services:
     build: ./star-burger/nginx
     volumes:
       - ./star-burger/media:/media/
-      - ./star-burger/staticfiles:/static/
+      - ./star-burger/staticfiles:/staticfiles/
     depends_on:
       - web
       - nodejs
