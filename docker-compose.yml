@@ -10,6 +10,7 @@ services:
       - 8000
     depends_on:
       - db
+      - nodejs
 
   db:
     image: postgres:13.0-alpine
@@ -28,8 +29,6 @@ services:
       - ./star-burger/bundles-src:/usr/src/star-burger/bundles-src/
       - ./star-burger/bundles:/usr/src/star-burger/bundles/
     command: ./node_modules/.bin/parcel build bundles-src/index.js --dist-dir bundles --public-url="./"
-    depends_on:
-      - web
 
   nginx:
     build: ./star-burger/nginx
