@@ -26,9 +26,7 @@ services:
   nodejs:
     build: ./nodejs
     volumes:
-      - ./star-burger/bundles-src:/usr/src/star-burger/bundles-src/
       - ./star-burger/bundles:/usr/src/star-burger/bundles/
-    command: ./node_modules/.bin/parcel build bundles-src/index.js --dist-dir bundles --public-url="./"
 
   nginx:
     build: ./star-burger/nginx
