@@ -27,6 +27,7 @@ services:
     image: dimitryrukhadze/burgers-nodejs:latest
     volumes:
       - ./star-burger/bundles:/usr/src/star-burger/bundles/
+    command: ./node_modules/.bin/parcel build bundles-src/index.js --dist-dir bundles --public-url="./"
 
 
   nginx:
