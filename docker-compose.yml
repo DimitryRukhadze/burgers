@@ -6,7 +6,6 @@ services:
     command: gunicorn star_burger.wsgi:application --bind 0.0.0.0:8000
     volumes:
       - ./star-burger:/usr/src/star-burger/
-      - bundles:/usr/src/star-burger/bundles/
     expose:
       - 8000
     depends_on:
@@ -26,8 +25,8 @@ services:
   nodejs:
     image: dimitryrukhadze/burgers-nodejs:latest
     volumes:
-      - bundles:/usr/src/star-burger/bundles/
-    command: ls
+      - ./star-burger/bundles:/usr/src/star-burger/mnt/
+    command: cp -R /usr/src/star-burger/bundles/ /usr/src/star-burger/mnt/
     depends_on:
       - web
 
