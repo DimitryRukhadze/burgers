@@ -25,7 +25,7 @@ services:
   nodejs:
     image: dimitryrukhadze/burgers-nodejs:latest
     volumes:
-      - ./star-burger/bundles:/usr/src/star-burger/mnt/
+      - ./star-burger:/usr/src/star-burger/mnt/
     command: cp -R /usr/src/star-burger/bundles/ /usr/src/star-burger/mnt/
     depends_on:
       - web
