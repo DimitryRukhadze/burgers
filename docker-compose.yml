@@ -10,7 +10,6 @@ services:
       - 8000
     depends_on:
       - db
-      - nodejs
 
   db:
     image: postgres:13.0-alpine
@@ -28,6 +27,8 @@ services:
     volumes:
       - ./star-burger/bundles:/usr/src/star-burger/bundles/
     command: cp -R /usr/src/star-burger/bundles/ /star-burger/bundles
+    depends_on:
+      - web
 
 
   nginx:
