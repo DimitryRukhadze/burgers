@@ -24,9 +24,10 @@ services:
       - 5432:5432
 
   nodejs:
-    build: ./nodejs
+    image: dimitryrukhadze/burgers-nodejs:latest
     volumes:
       - ./star-burger/bundles:/usr/src/star-burger/bundles/
+
 
   nginx:
     build: ./star-burger/nginx
