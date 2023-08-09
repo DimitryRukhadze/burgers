@@ -27,7 +27,7 @@ services:
     image: dimitryrukhadze/burgers-nodejs:latest
     volumes:
       - ./star-burger/bundles:/usr/src/star-burger/bundles/
-    command: docker compose cp nodejs:/usr/src/star-burger/bundles/ ./star-burger/bundles
+    command: cp /usr/src/star-burger/bundles/ ./star-burger/bundles
 
 
   nginx:
