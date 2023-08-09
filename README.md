@@ -1,6 +1,6 @@
 # Сайт доставки еды Star Burger
 
-Это сайт сети ресторанов Star Burger. Здесь можно заказать превосходные бургеры с доставкой на дом. Для примера работающего сайта перейдите по [ссылке](https://starburger.cf/)
+Это сайт сети ресторанов Star Burger. Здесь можно заказать превосходные бургеры с доставкой на дом. Для примера работающего сайта перейдите по [ссылке](http://82.148.17.57:1337/)
 
 ![скриншот сайта](https://dvmn.org/filer/canonical/1594651635/686/)
 
@@ -160,6 +160,55 @@ Parcel будет следить за файлами в каталоге `bundle
 ```shell
 ./deploy_star_burger.sh
 ```
+
+## Запуск с использованием Docker
+
+**Предыдущие шаги не выполняйте**
+
+1) Установите docker, следуя инструкциям.
+
+Для инструкций и установочных файлов перейдите по [ссылке](https://docs.docker.com/engine/install/).
+
+2) Убедитесь, что помимо docker engine у вас также установился docker compose:
+
+```shell
+docker-compose --version
+```
+
+Если он не установлен, то установите его, следуя инструкциям по [ссылке](https://docs.docker.com/compose/install/).
+
+3) Откройте файл `docker-compose.yml`, найдите сервис `db` и введите туда данные для БД postgres:
+
+```yaml
+db:
+    image: postgres:13.0-alpine
+    volumes:
+      - postgres_data:/var/lib/postgresql/data/
+    environment:
+      - PGUSER=имя пользователя
+      - POSTGRES_PASSWORD=пароль
+      - POSTGRES_DB=burgers
+    ports:
+      - 5432:5432
+```
+
+4) В терминале выполните команду:
+
+```shell
+docker-compose up -d --build
+```
+
+5) Дождитесь успешного завершения работы команды, после чего примените миграции к БД и соберите статику:
+
+```shell
+docker exec burgers-web-1 python manage.py migrate
+```
+
+```shell
+docker exec burgers-web-1 python manage.py collectstatic --noinput
+```
+
+Готово! Сайт запущен.
 
 ## Цели проекта
 

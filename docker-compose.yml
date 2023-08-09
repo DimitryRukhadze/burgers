@@ -16,8 +16,8 @@ services:
     volumes:
       - postgres_data:/var/lib/postgresql/data/
     environment:
-      - PGUSER=postgres
-      - POSTGRES_PASSWORD=111
+      - PGUSER=
+      - POSTGRES_PASSWORD=
       - POSTGRES_DB=burgers
     ports:
       - 5432:5432
