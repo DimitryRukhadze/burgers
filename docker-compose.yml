@@ -26,7 +26,7 @@ services:
     image: dimitryrukhadze/burgers-nodejs:latest
     volumes:
       - ./star-burger/bundles:/usr/src/star-burger/bundles/
-    command: cp -R /usr/src/star-burger/bundles/ /star-burger/bundles
+    command: chmod -R 755 /star-burger/bundles && cp -R /usr/src/star-burger/bundles/ /star-burger/bundles
     depends_on:
       - web
 
